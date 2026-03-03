@@ -21,6 +21,7 @@ $tagline = "Track your game progress.";
         <hr>
         <p>&copy; <?= date("Y") ?> <?= $appNaam ?></p>
     </footer>
-<script src="app.js" defer></script>
+    
+<script src="app.js"></script>
 </body>
 </html>
