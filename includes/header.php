@@ -2,6 +2,10 @@
 if (!isset($appNaam)) {
     $appNaam = 'ClutchTracker';
 }
+
+if (!isset($basePath)) {
+    $basePath = '';
+}
 ?>
 <!DOCTYPE html>
 <html lang="nl">
@@ -18,6 +22,23 @@ if (!isset($appNaam)) {
             line-height: 1.5;
             background: #f6f7fb;
             color: #1f2937;
+        }
+
+        nav {
+            margin-bottom: 20px;
+            display: flex;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #1d4ed8;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
         }
 
         main {
@@ -50,6 +71,39 @@ if (!isset($appNaam)) {
             border-radius: 10px;
             background: #eef2ff;
         }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+            max-width: 420px;
+            padding: 10px 12px;
+            border: 1px solid #cbd5e1;
+            border-radius: 10px;
+            margin-bottom: 16px;
+        }
+
+        button {
+            padding: 10px 16px;
+            border: 0;
+            border-radius: 10px;
+            background: #1d4ed8;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        button:hover {
+            background: #1e40af;
+        }
     </style>
 </head>
 <body>
+<nav>
+    <a href="<?= htmlspecialchars($basePath) ?>index.php">Home</a>
+    <a href="<?= htmlspecialchars($basePath) ?>pages/toevoegen.php">Toevoegen</a>
+</nav>

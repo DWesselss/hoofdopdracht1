@@ -2,10 +2,11 @@
 $appNaam = 'ClutchTracker';
 $trackerType = 'Game Score Tracker';
 $tagline = 'Track je games, status en jaartallen op één plek.';
+$basePath = '';
 
 require_once 'includes/db.php';
 
-$stmt = $conn->prepare('SELECT titel, jaartal, status FROM items ORDER BY ID ASC');
+$stmt = $conn->prepare('SELECT titel, jaartal, status FROM games ORDER BY ID ASC');
 $stmt->execute();
 $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -15,6 +16,8 @@ require_once 'includes/header.php';
     <h1><span id="greeting">Hoi</span>, welkom bij <?= htmlspecialchars($appNaam) ?></h1>
     <h2>Dit is mijn <?= htmlspecialchars($trackerType) ?></h2>
     <p><?= htmlspecialchars($tagline) ?></p>
+
+    <p><a href="pages/toevoegen.php">Nieuw item toevoegen</a></p>
 
     <h2>Overzicht van items</h2>
 
