@@ -31,13 +31,15 @@ if (!isset($basePath)) {
             flex-wrap: wrap;
         }
 
-        nav a {
+        nav a,
+        .back-link {
             color: #1d4ed8;
             text-decoration: none;
             font-weight: 600;
         }
 
-        nav a:hover {
+        nav a:hover,
+        .back-link:hover {
             text-decoration: underline;
         }
 
@@ -66,7 +68,8 @@ if (!isset($basePath)) {
             border-top: 1px solid #d1d5db;
         }
 
-        .empty-message {
+        .empty-message,
+        .success-box {
             padding: 12px 16px;
             border-radius: 10px;
             background: #eef2ff;
@@ -85,6 +88,7 @@ if (!isset($basePath)) {
             border: 1px solid #cbd5e1;
             border-radius: 10px;
             margin-bottom: 16px;
+            box-sizing: border-box;
         }
 
         button {

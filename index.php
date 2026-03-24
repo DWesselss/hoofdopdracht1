@@ -1,12 +1,12 @@
 <?php
 $appNaam = 'ClutchTracker';
-$trackerType = 'Game Score Tracker';
-$tagline = 'Track je games, status en jaartallen op één plek.';
+$trackerType = 'Game Tracker';
+$tagline = 'Track je games, genre en jaartal op één plek.';
 $basePath = '';
 
 require_once 'includes/db.php';
 
-$stmt = $conn->prepare('SELECT titel, jaartal, status FROM games ORDER BY ID ASC');
+$stmt = $conn->prepare('SELECT titel, genre, jaartal FROM games ORDER BY id ASC');
 $stmt->execute();
 $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -17,7 +17,7 @@ require_once 'includes/header.php';
     <h2>Dit is mijn <?= htmlspecialchars($trackerType) ?></h2>
     <p><?= htmlspecialchars($tagline) ?></p>
 
-    <p><a href="pages/toevoegen.php">Nieuw item toevoegen</a></p>
+    <p><a href="pages/toevoegen.php" class="back-link">Nieuw item toevoegen</a></p>
 
     <h2>Overzicht van items</h2>
 
@@ -26,8 +26,8 @@ require_once 'includes/header.php';
             <?php foreach ($items as $item): ?>
                 <li>
                     <strong><?= htmlspecialchars($item['titel']) ?></strong>
-                    (<?= htmlspecialchars((string) $item['jaartal']) ?>) -
-                    <?= htmlspecialchars($item['status']) ?>
+                    - <?= htmlspecialchars($item['genre']) ?>
+                    (<?= htmlspecialchars((string) $item['jaartal']) ?>)
                 </li>
             <?php endforeach; ?>
         </ul>

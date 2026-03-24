@@ -1,10 +1,14 @@
-let hour = new Date().getHours();
-let greetingElement = document.getElementById("greeting");
+const greetingElement = document.getElementById('greeting');
 
-if (hour < 12) {
-    greetingElement.textContent = "Goedemorgen";
-} else if (hour < 18) {
-    greetingElement.textContent = "Goedemiddag";
-} else {
-    greetingElement.textContent = "Goedenavond";
+if (greetingElement) {
+    const hour = new Date().getHours();
+    let greeting = 'goedenavond';
+
+    if (hour >= 6 && hour < 12) {
+        greeting = 'goedemorgen';
+    } else if (hour >= 12 && hour < 18) {
+        greeting = 'goedemiddag';
+    }
+
+    greetingElement.textContent = greeting;
 }
