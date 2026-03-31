@@ -2,8 +2,9 @@
 $appNaam = 'ClutchTracker';
 $basePath = '../';
 
+require_once '../includes/db.php';
+
 $fouten = [];
-$succesmelding = '';
 $titel = '';
 $genre = '';
 $jaartal = '';
@@ -44,7 +45,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (count($fouten) === 0) {
-        $succesmelding = 'Item succesvol ontvangen.';
+        $stmt = $conn->prepare('INSERT INTO games (titel, genre, jaartal) VALUES (:titel, :genre, :jaartal)');
+        $stmt->execute([
+            ':titel' => $titel,
+            ':genre' => $genre,
+            ':jaartal' => $jaartal
+        ]);
+
+        header('Location: ../index.php');
+        exit;
     }
 }
 
@@ -64,10 +73,6 @@ require_once '../includes/header.php';
                         <li><?= htmlspecialchars($fout) ?></li>
                     <?php endforeach; ?>
                 </ul>
-            </div>
-        <?php else: ?>
-            <div class="success-box">
-                <p><?= htmlspecialchars($succesmelding) ?></p>
             </div>
 
             <ul>
