@@ -12,10 +12,10 @@ require_once '../includes/header.php';
         <input type="text" name="titel" id="titel" required>
 
         <label for="genre">Genre:</label>
-        <input type="text" name="genre" id="genre">
+        <input type="text" name="genre" id="genre" required>
 
         <label for="jaartal">Jaartal:</label>
-        <input type="number" name="jaartal" id="jaartal">
+        <input type="number" name="jaartal" id="jaartal" required>
 
         <button type="submit">Verzenden</button>
     </form>

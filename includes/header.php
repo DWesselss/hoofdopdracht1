@@ -69,10 +69,20 @@ if (!isset($basePath)) {
         }
 
         .empty-message,
-        .success-box {
+        .success-box,
+        .error-box {
             padding: 12px 16px;
             border-radius: 10px;
+            margin-bottom: 16px;
+        }
+
+        .empty-message,
+        .success-box {
             background: #eef2ff;
+        }
+
+        .error-box {
+            background: #fee2e2;
         }
 
         label {
