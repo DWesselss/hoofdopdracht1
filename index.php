@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 $appNaam = 'ClutchTracker';
 $trackerType = 'Game Tracker';
 $tagline = 'Track je games, genre en jaartal op één plek.';
@@ -16,6 +18,20 @@ require_once 'includes/header.php';
     <h1><span id="greeting">Hoi</span>, welkom bij <?= htmlspecialchars($appNaam) ?></h1>
     <h2>Dit is mijn <?= htmlspecialchars($trackerType) ?></h2>
     <p><?= htmlspecialchars($tagline) ?></p>
+
+    <?php if (isset($_SESSION['success'])): ?>
+        <div class="success-box">
+            <?= htmlspecialchars($_SESSION['success']) ?>
+        </div>
+        <?php unset($_SESSION['success']); ?>
+    <?php endif; ?>
+
+    <?php if (isset($_SESSION['error'])): ?>
+        <div class="error-box">
+            <?= htmlspecialchars($_SESSION['error']) ?>
+        </div>
+        <?php unset($_SESSION['error']); ?>
+    <?php endif; ?>
 
     <p><a href="pages/toevoegen.php" class="back-link">Nieuw item toevoegen</a></p>
 
