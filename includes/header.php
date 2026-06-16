@@ -32,14 +32,16 @@ if (!isset($basePath)) {
         }
 
         nav a,
-        .back-link {
+        .back-link,
+        table a {
             color: #1d4ed8;
             text-decoration: none;
             font-weight: 600;
         }
 
         nav a:hover,
-        .back-link:hover {
+        .back-link:hover,
+        table a:hover {
             text-decoration: underline;
         }
 
@@ -60,6 +62,23 @@ if (!isset($basePath)) {
 
         li {
             margin-bottom: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 16px;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 10px;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        th {
+            background: #eef2ff;
         }
 
         footer {
@@ -83,6 +102,11 @@ if (!isset($basePath)) {
 
         .error-box {
             background: #fee2e2;
+        }
+
+        .link-divider {
+            color: #94a3b8;
+            margin: 0 6px;
         }
 
         label {
@@ -120,4 +144,5 @@ if (!isset($basePath)) {
 <nav>
     <a href="<?= htmlspecialchars($basePath) ?>index.php">Home</a>
     <a href="<?= htmlspecialchars($basePath) ?>pages/toevoegen.php">Toevoegen</a>
+    <a href="<?= htmlspecialchars($basePath) ?>register.php">Registreren</a>
 </nav>

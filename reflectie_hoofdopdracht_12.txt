@@ -1,0 +1,22 @@
+Hoofdopdracht 12 - Reflectie CRUD
+
+READ:
+De lijstpagina index.php toont alle items uit de games tabel.
+
+CREATE:
+Via pages/toevoegen.php kan ik een nieuw item toevoegen. pages/verwerk.php slaat dit op met een prepared statement.
+
+UPDATE:
+Via edit.php?id=... kan ik een item ophalen, aanpassen en opslaan met een UPDATE query. Het ID wordt meegestuurd met een hidden input.
+
+DELETE:
+Via delete.php?id=... kan ik een item verwijderen. Dit gebruikt een prepared statement en stuurt daarna terug naar index.php.
+
+Wat vond ik het moeilijkst?
+Het moeilijkste was zorgen dat het juiste ID wordt meegestuurd bij aanpassen en verwijderen.
+
+Waar ging het mis?
+Als er geen ID in de URL staat, weet de pagina niet welk item aangepast of verwijderd moet worden.
+
+Hoe heb ik dit opgelost?
+Ik controleer of het ID bestaat en numeriek is. Daarna gebruik ik prepared statements en redirects, zodat de app netjes blijft werken zonder errors.

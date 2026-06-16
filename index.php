@@ -8,7 +8,7 @@ $basePath = '';
 
 require_once 'includes/db.php';
 
-$stmt = $conn->prepare('SELECT titel, genre, jaartal FROM games ORDER BY id ASC');
+$stmt = $conn->prepare('SELECT id, titel, genre, jaartal FROM games ORDER BY id ASC');
 $stmt->execute();
 $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -33,20 +33,41 @@ require_once 'includes/header.php';
         <?php unset($_SESSION['error']); ?>
     <?php endif; ?>
 
-    <p><a href="pages/toevoegen.php" class="back-link">Nieuw item toevoegen</a></p>
+    <p>
+        <a href="pages/toevoegen.php" class="back-link">Nieuw item toevoegen</a>
+        <span class="link-divider">|</span>
+        <a href="register.php" class="back-link">Registreren</a>
+    </p>
 
     <h2>Overzicht van items</h2>
 
     <?php if (count($items) > 0): ?>
-        <ul>
-            <?php foreach ($items as $item): ?>
-                <li>
-                    <strong><?= htmlspecialchars($item['titel']) ?></strong>
-                    - <?= htmlspecialchars($item['genre']) ?>
-                    (<?= htmlspecialchars((string) $item['jaartal']) ?>)
-                </li>
-            <?php endforeach; ?>
-        </ul>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Titel</th>
+                    <th>Genre</th>
+                    <th>Jaartal</th>
+                    <th>Acties</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($items as $item): ?>
+                    <tr>
+                        <td><?= htmlspecialchars((string) $item['id']) ?></td>
+                        <td><strong><?= htmlspecialchars($item['titel']) ?></strong></td>
+                        <td><?= htmlspecialchars($item['genre']) ?></td>
+                        <td><?= htmlspecialchars((string) $item['jaartal']) ?></td>
+                        <td>
+                            <a href="edit.php?id=<?= htmlspecialchars((string) $item['id']) ?>">Aanpassen</a>
+                            <span class="link-divider">|</span>
+                            <a href="delete.php?id=<?= htmlspecialchars((string) $item['id']) ?>" onclick="return confirm('Weet je zeker dat je dit item wilt verwijderen?');">Verwijderen</a>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
     <?php else: ?>
         <p class="empty-message">Er zijn nog geen items toegevoegd.</p>
     <?php endif; ?>
