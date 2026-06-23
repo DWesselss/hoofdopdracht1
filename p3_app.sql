@@ -24,3 +24,9 @@ INSERT INTO `games` (`titel`, `genre`, `jaartal`) VALUES
 ('Valorant', 'Shooter', 2020),
 ('Elden Ring', 'RPG', 2022),
 ('Rocket League', 'Sport', 2015);
+
+-- Testaccount voor de loginopdracht:
+-- gebruikersnaam: demo
+-- wachtwoord: geheim123
+INSERT INTO `users` (`username`, `password`) VALUES
+('demo', '$2y$12$ZxOCkEICuy8HfqFD8HAK3./GjjktOPfHxfqgkAe27xA.Jssj952Gq');

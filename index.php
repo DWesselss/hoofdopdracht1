@@ -37,6 +37,8 @@ require_once 'includes/header.php';
         <a href="pages/toevoegen.php" class="back-link">Nieuw item toevoegen</a>
         <span class="link-divider">|</span>
         <a href="register.php" class="back-link">Registreren</a>
+        <span class="link-divider">|</span>
+        <a href="login.php" class="back-link">Inloggen</a>
     </p>
 
     <h2>Overzicht van items</h2>

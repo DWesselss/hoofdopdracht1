@@ -145,4 +145,5 @@ if (!isset($basePath)) {
     <a href="<?= htmlspecialchars($basePath) ?>index.php">Home</a>
     <a href="<?= htmlspecialchars($basePath) ?>pages/toevoegen.php">Toevoegen</a>
     <a href="<?= htmlspecialchars($basePath) ?>register.php">Registreren</a>
+    <a href="<?= htmlspecialchars($basePath) ?>login.php">Inloggen</a>
 </nav>
