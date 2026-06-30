@@ -34,11 +34,15 @@ require_once 'includes/header.php';
     <?php endif; ?>
 
     <p>
-        <a href="pages/toevoegen.php" class="back-link">Nieuw item toevoegen</a>
-        <span class="link-divider">|</span>
-        <a href="register.php" class="back-link">Registreren</a>
-        <span class="link-divider">|</span>
-        <a href="login.php" class="back-link">Inloggen</a>
+        <?php if (isset($_SESSION['user'])): ?>
+            <a href="pages/toevoegen.php" class="back-link">Nieuw item toevoegen</a>
+            <span class="link-divider">|</span>
+            <a href="logout.php" class="back-link">Uitloggen</a>
+        <?php else: ?>
+            <a href="register.php" class="back-link">Registreren</a>
+            <span class="link-divider">|</span>
+            <a href="login.php" class="back-link">Inloggen om items te beheren</a>
+        <?php endif; ?>
     </p>
 
     <h2>Overzicht van items</h2>
@@ -62,9 +66,13 @@ require_once 'includes/header.php';
                         <td><?= htmlspecialchars($item['genre']) ?></td>
                         <td><?= htmlspecialchars((string) $item['jaartal']) ?></td>
                         <td>
-                            <a href="edit.php?id=<?= htmlspecialchars((string) $item['id']) ?>">Aanpassen</a>
-                            <span class="link-divider">|</span>
-                            <a href="delete.php?id=<?= htmlspecialchars((string) $item['id']) ?>" onclick="return confirm('Weet je zeker dat je dit item wilt verwijderen?');">Verwijderen</a>
+                            <?php if (isset($_SESSION['user'])): ?>
+                                <a href="edit.php?id=<?= htmlspecialchars((string) $item['id']) ?>">Aanpassen</a>
+                                <span class="link-divider">|</span>
+                                <a href="delete.php?id=<?= htmlspecialchars((string) $item['id']) ?>" onclick="return confirm('Weet je zeker dat je dit item wilt verwijderen?');">Verwijderen</a>
+                            <?php else: ?>
+                                <a href="login.php">Log in om te beheren</a>
+                            <?php endif; ?>
                         </td>
                     </tr>
                 <?php endforeach; ?>

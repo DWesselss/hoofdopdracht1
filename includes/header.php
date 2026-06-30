@@ -27,8 +27,14 @@ if (!isset($basePath)) {
         nav {
             margin-bottom: 20px;
             display: flex;
+            align-items: center;
             gap: 16px;
             flex-wrap: wrap;
+        }
+
+        .nav-user {
+            margin-left: auto;
+            font-weight: 600;
         }
 
         nav a,
@@ -143,7 +149,13 @@ if (!isset($basePath)) {
 <body>
 <nav>
     <a href="<?= htmlspecialchars($basePath) ?>index.php">Home</a>
-    <a href="<?= htmlspecialchars($basePath) ?>pages/toevoegen.php">Toevoegen</a>
-    <a href="<?= htmlspecialchars($basePath) ?>register.php">Registreren</a>
-    <a href="<?= htmlspecialchars($basePath) ?>login.php">Inloggen</a>
+
+    <?php if (isset($_SESSION['user'])): ?>
+        <a href="<?= htmlspecialchars($basePath) ?>pages/toevoegen.php">Toevoegen</a>
+        <a href="<?= htmlspecialchars($basePath) ?>logout.php">Uitloggen</a>
+        <span class="nav-user">Ingelogd als <?= htmlspecialchars($_SESSION['user']) ?></span>
+    <?php else: ?>
+        <a href="<?= htmlspecialchars($basePath) ?>register.php">Registreren</a>
+        <a href="<?= htmlspecialchars($basePath) ?>login.php">Inloggen</a>
+    <?php endif; ?>
 </nav>

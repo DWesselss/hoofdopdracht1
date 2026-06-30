@@ -1,0 +1,7 @@
+Hoofdopdracht 15 - Reflectie
+
+Waarom is deze beveiliging belangrijk?
+Deze controle zorgt ervoor dat alleen ingelogde gebruikers items kunnen toevoegen, aanpassen of verwijderen. De server controleert dit op iedere beveiligde pagina.
+
+Wat zou er gebeuren zonder deze check?
+Zonder de sessioncheck kan iemand de URL van edit.php, delete.php of pages/toevoegen.php rechtstreeks openen. Die persoon zou dan gegevens kunnen veranderen of verwijderen zonder ingelogd te zijn.

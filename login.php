@@ -21,15 +21,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         if ($user && password_verify($password, $user['password'])) {
+            // Hoofdopdracht 15: de session geeft aan dat de gebruiker is ingelogd.
+            $_SESSION['user'] = $user['username'];
             $_SESSION['user_id'] = $user['id'];
-            $_SESSION['username'] = $user['username'];
 
-            $melding = 'Succesvol ingelogd';
-            $meldingType = 'success';
-        } else {
-            $melding = 'Onjuiste gebruikersnaam of wachtwoord';
-            $meldingType = 'error';
+            $_SESSION['success'] = 'Succesvol ingelogd. Welkom ' . $user['username'] . '!';
+            header('Location: index.php');
+            exit;
         }
+
+        $melding = 'Onjuiste gebruikersnaam of wachtwoord.';
+        $meldingType = 'error';
     }
 }
 
